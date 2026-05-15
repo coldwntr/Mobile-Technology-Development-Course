@@ -109,6 +109,28 @@ fun MainScreen() {
                         Text(text = "Устройство")
                     }
                 )
+
+                NavigationBarItem(
+                    selected = selectedTab == 4,
+                    onClick = { selectedTab = 4 },
+                    icon = {
+                        Text(text = "👤")
+                    },
+                    label = {
+                        Text(text = "Профиль")
+                    }
+                )
+
+                NavigationBarItem(
+                    selected = selectedTab == 5,
+                    onClick = { selectedTab = 5 },
+                    icon = {
+                        Text(text = "🗂")
+                    },
+                    label = {
+                        Text(text = "Работа с файлами")
+                    }
+                )
             }
         }
     ) { innerPadding ->
@@ -117,6 +139,8 @@ fun MainScreen() {
             1 -> BrowserScreen(innerPadding)
             2 -> BackgroundTaskScreen(innerPadding)
             3 -> HardwareScreen(innerPadding)
+            4 -> ProfileScreen(innerPadding)
+            5 -> FileWorkScreen(innerPadding)
         }
     }
 }
