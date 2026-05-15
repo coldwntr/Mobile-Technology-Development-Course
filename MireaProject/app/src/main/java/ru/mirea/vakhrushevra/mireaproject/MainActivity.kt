@@ -98,6 +98,17 @@ fun MainScreen() {
                         Text(text = "Worker")
                     }
                 )
+
+                NavigationBarItem(
+                    selected = selectedTab == 3,
+                    onClick = { selectedTab = 3 },
+                    icon = {
+                        Text(text = "📱")
+                    },
+                    label = {
+                        Text(text = "Устройство")
+                    }
+                )
             }
         }
     ) { innerPadding ->
@@ -105,6 +116,7 @@ fun MainScreen() {
             0 -> DataScreen(innerPadding)
             1 -> BrowserScreen(innerPadding)
             2 -> BackgroundTaskScreen(innerPadding)
+            3 -> HardwareScreen(innerPadding)
         }
     }
 }
