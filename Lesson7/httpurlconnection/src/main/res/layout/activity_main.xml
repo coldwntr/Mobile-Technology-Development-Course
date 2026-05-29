@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/buttonLoad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Получить информацию"/>
+
+        <TextView
+            android:id="@+id/textIp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IP"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textRegion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Region"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weather"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

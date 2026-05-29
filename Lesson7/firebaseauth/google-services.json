@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710327325709",
+    "project_id": "lesson7vakhrushev",
+    "storage_bucket": "lesson7vakhrushev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710327325709:android:b9e0abfdb05757e5f43144",
+        "android_client_info": {
+          "package_name": "ru.mirea.vakhrushevra.firebaseauth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEenukdl2H84GL5iSiMU8NmchHoH70MLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
