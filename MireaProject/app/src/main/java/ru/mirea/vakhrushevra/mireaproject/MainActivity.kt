@@ -27,6 +27,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -38,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.work.Constraints
@@ -61,10 +63,49 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
+    val context = LocalContext.current
     var selectedTab by remember { mutableIntStateOf(0) }
+    val userEmail = remember { AuthHelper.currentUserEmail() }
 
-    Scaffold(
-        bottomBar = {
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
+                Text(
+                    text = "MireaProject",
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                if (!userEmail.isNullOrBlank()) {
+                    Text(
+                        text = userEmail,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
+
+            TextButton(
+                onClick = { AuthHelper.signOut(context) }
+            ) {
+                Text(text = "Выйти")
+            }
+        }
+
+        Scaffold(
+            modifier = Modifier.weight(1f),
+            bottomBar = {
             NavigationBar {
                 NavigationBarItem(
                     selected = selectedTab == 0,
@@ -131,6 +172,28 @@ fun MainScreen() {
                         Text(text = "Работа с файлами")
                     }
                 )
+
+                NavigationBarItem(
+                    selected = selectedTab == 6,
+                    onClick = { selectedTab = 6 },
+                    icon = {
+                        Text(text = "🌍")
+                    },
+                    label = {
+                        Text(text = "Сеть")
+                    }
+                )
+
+                NavigationBarItem(
+                    selected = selectedTab == 7,
+                    onClick = { selectedTab = 7 },
+                    icon = {
+                        Text(text = "📍")
+                    },
+                    label = {
+                        Text(text = "Заведения")
+                    }
+                )
             }
         }
     ) { innerPadding ->
@@ -141,7 +204,10 @@ fun MainScreen() {
             3 -> HardwareScreen(innerPadding)
             4 -> ProfileScreen(innerPadding)
             5 -> FileWorkScreen(innerPadding)
+            6 -> NetworkScreen(innerPadding)
+            7 -> EstablishmentsScreen(innerPadding)
         }
+    }
     }
 }
 

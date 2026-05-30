@@ -18,6 +18,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,6 +48,7 @@ fun ProfileScreen(innerPadding: PaddingValues) {
     var number by remember { mutableStateOf("") }
     var movie by remember { mutableStateOf("") }
     var savedText by remember { mutableStateOf("Сохранённых данных пока нет") }
+    val userEmail = remember { AuthHelper.currentUserEmail() }
 
     LaunchedEffect(Unit) {
         val preferences = context.getSharedPreferences(
@@ -157,6 +159,28 @@ fun ProfileScreen(innerPadding: PaddingValues) {
                 text = savedText,
                 style = MaterialTheme.typography.bodyLarge
             )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        FeatureCard(title = "Аккаунт Firebase") {
+            Text(
+                text = if (userEmail.isNullOrBlank()) {
+                    "Пользователь не авторизован"
+                } else {
+                    "Email: $userEmail"
+                },
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            OutlinedButton(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { AuthHelper.signOut(context) }
+            ) {
+                Text(text = "Выйти из аккаунта")
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -40,6 +41,13 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.osmdroid.android)
+    implementation(libs.androidx.preference.ktx)
     implementation("androidx.work:work-runtime-ktx:2.8.1")
     implementation("androidx.compose.runtime:runtime-livedata")
     implementation(platform(libs.androidx.compose.bom))
